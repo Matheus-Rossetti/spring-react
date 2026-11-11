@@ -11,6 +11,27 @@ services:
       - "5432:5432"
     volumes:
       - auth-db-data:/var/lib/postgresql/data
+    networks:
+      - auth-network
+
+  auth-api:
+    image: matheuzdreher/auth-service:latest
+    container_name: auth-api
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://auth-db:5432/auth_db
+      - SPRING_DATASOURCE_USERNAME=auth_user
+      - SPRING_DATASOURCE_PASSWORD=auth_pass
+    depends_on:
+      - auth-db
+    networks:
+      - auth-network
 
 volumes:
   auth-db-data:
+
+networks:
+  auth-network:
+    driver: bridge
