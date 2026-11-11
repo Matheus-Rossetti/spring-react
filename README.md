@@ -5,7 +5,8 @@ Microsserviço de autenticação desenvolvido com Spring Boot, Spring Security, 
 
 Endpoints Principais
 
-1. Registrar Técnico
+
+## 1. Registrar Técnico
 
 Método: POST
 
@@ -29,7 +30,7 @@ Resposta (200 OK):
 }
 
 
-2. Autenticação (Login)
+## 2. Autenticação (Login)
 
 Método: POST
 
